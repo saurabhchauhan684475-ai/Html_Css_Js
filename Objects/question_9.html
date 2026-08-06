@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coin Flip</title>
+</head>
+
+<body>
+
+  <h1>Coin Flip Game</h1>
+
+  <button onclick="playGame('Heads')">Heads</button>
+  <button onclick="playGame('Tails')">Tails</button>
+
+  <button onclick="resetScore()">Reset Score</button>
+
+  <p id="scoreDisplay"></p>
+
+  <script>
+
+    // load score from storage or create new
+    let score = JSON.parse(localStorage.getItem('score'));
+
+    if (!score) {
+      score = {
+        wins: 0,
+        losses: 0
+      };
+    }
+
+    function pickComputerMove() {
+      return Math.random() < 0.5 ? 'Heads' : 'Tails';
+    }
+
+    function playGame(guess) {
+
+      let computerMove = pickComputerMove();
+      let result = '';
+
+      if (guess === computerMove) {
+        result = 'Win';
+        score.wins++;
+
+      } else {
+        result = 'Lose';
+        score.losses++;
+      }
+
+      // save score
+      localStorage.setItem('score', JSON.stringify(score));
+
+      updateScore();
+
+      alert(`You picked: ${guess}
+Computer picked: ${computerMove}
+Result: ${result}`);
+    }
+
+    function updateScore() {
+      document.getElementById('scoreDisplay').innerText =
+        `Wins: ${score.wins} | Losses: ${score.losses}`;
+    }
+
+    function resetScore() {
+      score = { wins: 0, losses: 0 };
+      localStorage.removeItem('score');
+      updateScore();
+    }
+
+    // show score on page load
+    updateScore();
+
+  </script>
+
+</body>
+</html>

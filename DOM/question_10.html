@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <title> Calculator </title>
+  <head>
+    <style>
+      .para{
+        font-size: larger;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <input placeholder="Enter Value 1 :"
+    class="js_value_1">
+    <input placeholder="Choose Function :"
+    class="js_function">
+    <input placeholder="Enter Value 2 :"
+    class="js_value_2">
+    <button onclick="calculate()"> Calculate </button>
+    <p class="results"></p>
+    <script>
+      function calculate(){
+        const value1 = Number(document.querySelector('.js_value_1').value);
+        const operator = (document.querySelector('.js_function').value);
+        const value2 = Number(document.querySelector('.js_value_2').value);
+      
+
+      let result;
+      if(operator==="+"){
+        result = value1+value2;
+      }else if(operator==="-"){
+        result=value1-value2
+      }else if(operator==="*"){
+        result=value1*value2
+      }else if(operator==="/"){
+        result=value1/value2
+      }else if(operator==="%"){
+        result=value1%value2
+      }else {
+        result ="Invalid Operator"
+      }
+      
+      document.querySelector('.results').innerHTML=result;
+    }
+    </script>
+    
+
+    

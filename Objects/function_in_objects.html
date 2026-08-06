@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Functions in Objects </title>
+  </head>
+  <body>
+    <script>
+      let product ={
+        age : 17,
+        name : function users(){
+          console.log('Hey ! Saurabh this is a Function ')
+        }
+      }
+      console.log(product.age)
+      console.log(JSON.stringify(product))
+      console.log(JSON.parse(JSON.stringify(product)))
+      
+      product.name()
+    </script>
+
+  </body>
+</html>

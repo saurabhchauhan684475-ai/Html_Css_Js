@@ -1,0 +1,27 @@
+
+<body>
+  <button class="js_heads_button"
+  onclick="heads()"> Heads </button>
+  <button class="js_tails_button"
+  onclick="tails()"> Tails </button>
+  <script>
+    function heads(){
+      const headElement = document.querySelector('.js_heads_button');;
+      if(headElement.innerHTML==="Heads"){
+        headElement.innerHTML="You Choose Heads";
+      }else{
+        headElement.innerHTML="Heads"
+      }
+    }
+
+    function tails(){
+      const tailsElement = document.querySelector('.js_tails_button');
+      if(tailsElement.innerHTML==="Tails"){
+        tailsElement.innerHTML="You Choose Tails";
+      }else{
+        tailsElement.innerHTML="Tails";
+      }
+    }
+    
+  </script>
+</body>

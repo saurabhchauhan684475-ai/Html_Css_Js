@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Cart Quantity </title>
+    <style>
+      .font-style{
+        font-size: large;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <p class = 'font-style'> Cart Quantity</p>
+    <button onclick="
+    updateCart(cartQuantity);">
+    Cart Quantity </button>
+    <button onclick="
+    updateCart(1);
+    "> Add To Cart </button>
+    <button onclick="
+    updateCart(2);
+    "> +2 </button>
+    <button onclick="
+    updateCart(3);
+    "> +3 </button>
+    <button onclick="
+    updateCart('reset');
+    "> Reset Cart </button>
+    <script>
+      let cartQuantity = 0;
+      function updateCart(quantity){
+        if(quantity===1){
+          cartQuantity+=1;
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }else if(quantity===cartQuantity){
+          cartQuantity;
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }else if(quantity===2){
+          cartQuantity+=2;
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }else if(quantity===3){
+          cartQuantity+=3
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }else if(quantity==='reset'){
+          cartQuantity=0;
+          console.log(`The Cart Was Reset`);
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }
+      }
+    </script>
+  </body>
+  
+</html>

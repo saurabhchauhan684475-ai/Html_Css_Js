@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Coin Flip </title>
+  </head>
+  <body>
+    <button onclick="
+      let randomNumber = Math.random()
+      let computerMove=''
+      if(randomNumber>=0 && randomNumber<=1/2){
+        computerMove='Heads'
+      }else if(randomNumber>1/2 && randomNumber<1){
+        computerMove='Tails'
+      }
+      let result =''
+      if(computerMove==='Heads'){
+        result = 'You Win'
+      }else if(computerMove==='Tails'){
+        result = 'You Loose '
+      }
+     alert(`You picked : Heads , Computer picked :  ${computerMove} , Result : ${result}` )
+      "> Heads </button>
+    <button onclick="
+      let randomNumber1 = Math.random()
+      let computerMove1=''
+      if(randomNumber1>=0 && randomNumber1<=1/2){
+        computerMove1='Heads'
+      }else if(randomNumber1>1/2 && randomNumber1<1){
+        computerMove1='Tails'
+      }
+      let result1 =''
+      if(computerMove1==='Heads'){
+        result1 = 'You Win'
+      }else if(computerMove1==='Tails'){
+        result1 = 'You Loose '
+      }
+      alert(`You picked : Tails , Computer picked : ${computerMove1} , Result : ${result1}` )"> Tails </button>
+    <script>
+      
+    </script>
+  </body>
+</html>

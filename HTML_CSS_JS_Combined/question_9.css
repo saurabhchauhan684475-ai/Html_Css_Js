@@ -1,0 +1,25 @@
+<title> Amazon Shipping Calculator </title>
+    <style>
+      .cost_input{
+        font-size: 15px;
+        padding:10px;
+        margin:10px;
+        background-color: goldenrod;
+      }
+      .calculate_button{
+        background-color: green;
+        color: white;
+        border:none;
+        font-size: 15px;
+        padding:20px 50px;
+      }
+      
+      .error{
+        background-color: rgb(233, 3, 3);
+        color: white;
+        border:none;
+        font-size: 15px;
+        padding:20px 50px;
+      }
+      </style>
+      </head>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input class="js-length" placeholder="Length">
+
+<input class="js-from" placeholder="From">
+
+<input class="js-to" placeholder="To">
+
+<button onclick="convertLength()">Convert</button>
+
+<p class="js-results"></p>
+
+<script>
+
+function convertLength() {
+
+  const length = Number(document.querySelector('.js-length').value);
+
+  const from = document.querySelector('.js-from').value;
+
+  const to = document.querySelector('.js-to').value;
+
+  let result;
+
+  if (from === 'miles' && to === 'km') {
+    result = length * 1.6;
+
+  } else if (from === 'miles' && to === 'feet') {
+    result = length * 5280;
+
+  } else if (from === 'km' && to === 'miles') {
+    result = length / 1.6;
+
+  } else if (from === 'km' && to === 'feet') {
+    result = length * 3281;
+
+  } else if (from === 'feet' && to === 'miles') {
+    result = length / 5280;
+
+  } else if (from === 'feet' && to === 'km') {
+    result = length / 3281;
+
+  } else {
+    result = "Invalid conversion";
+  }
+
+  document.querySelector('.js-results').innerHTML = result;
+
+}
+
+</script>
+
+</body>
+</html>

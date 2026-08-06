@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <title> Calculator </title>
+  <head>
+    <style>
+      .para{
+        font-size: larger;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <p class = 'para'> Calculator </p>
+
+    <button onclick="
+    updateCalculation(1)"> 1 </button>
+
+    <button onclick="
+    updateCalculation(2)"> 2 </button>
+
+    <button onclick="
+    updateCalculation(3)"> 3 </button>
+
+    <button onclick="
+    updateCalculation(' + ')"> + </button>
+
+    <p> </p>
+
+    <button onclick="
+    updateCalculation(4)"> 4 </button>
+
+    <button onclick="
+    updateCalculation(5)"> 5 </button>
+
+    <button onclick="
+    updateCalculation(6)"> 6 </button>
+
+    <button onclick="
+    updateCalculation(' - ')"> - </button>
+
+    <p> </p>
+
+    <button onclick="
+    updateCalculation(7)"> 7 </button>
+
+    <button onclick="
+    updateCalculation(8)"> 8 </button>
+
+    <button onclick="
+    updateCalculation(9)"> 9 </button>
+
+    <button onclick="
+    updateCalculation(' * ')"> * </button>
+
+    <p></p>
+
+    <button onclick="
+    updateCalculation(0)"> 0 </button>
+
+    <button onclick="
+    updateCalculation('.')"> . </button>
+
+    <button onclick="
+    updateCalculation('/')"> / </button>
+
+    <button onclick="
+    updateCalculation(' = ')"> = </button>
+
+    <p>
+    </p>
+
+    <button onclick="">reset
+    </button>
+
+    <script>
+      let calculation = '';
+      function updateCalculation(number){
+        if(number===1){
+          calculation+=1;
+          console.log(calculation);
+      }else if(number===2){
+        calculation+=2;
+        console.log(calculation);
+      }else if(number===3){
+        calculation+=3;
+        console.log(calculation);
+      }else if(number===' + '){
+        calculation+=' + ';
+        console.log(calculation);
+      }else if(number===4){
+        calculation+=4;
+        console.log(calculation);
+      }else if(number===5){
+        calculation+=5;
+        console.log(calculation);
+      }else if(number===6){
+        calculation+=6;
+        console.log(calculation);
+      }else if(number===' - '){
+        calculation+=' - ';
+        console.log(calculation);
+      }else if(number===7){
+        calculation+=7;
+        console.log(calculation);
+      }else if(number===8){
+        calculation+=8;
+        console.log(calculation);
+      }else if(number===9){
+        calculation+=9;
+        console.log(calculation);
+      }else if(number===' * '){
+        calculation+=' * ';
+        console.log(calculation);
+      }else if(number===0){
+        calculation+=0;
+        console.log(calculation);
+      }else if(number==='/'){
+        calculation+='/';
+        console.log(calculation);
+      }else if(number==='.'){
+        calculation+='.';
+        console.log(calculation);
+      }else if(number===' = '){
+        calculation =eval(calculation);
+        console.log(calculation);
+      }else if(number==='reset'){
+        calculation===0;
+        console.log(calculation);
+      }
+    }
+      
+        
+    </script>
+  </body>
+</html>

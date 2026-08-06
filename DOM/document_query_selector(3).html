@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Subscribe Me </title>
+    <button class = "js_subscribe_button"
+    onclick="Subscribe()"> Subscribe Please </button>
+  </head>
+  <body>
+    <script>
+      function Subscribe(){
+        const ButtonElement = document.querySelector('.js_subscribe_button');
+        if(ButtonElement.innerHTML==='Subscribe Please'){
+          ButtonElement.innerHTML='Subscribed';
+        }else{
+          ButtonElement.innerHTML='Subscribe Please';
+        }
+      }
+    </script>
+
+  </body>
+</html>

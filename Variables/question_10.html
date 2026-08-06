@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .para{
+        font-size: large;
+        font-style: italic;
+      }
+
+    </style>
+  </head>
+  <body>
+    <p class = 'para'> Cart Quantity</p>
+
+    <button onclick="
+    console.log(`Cart Qunatity : $${cartQuantity}`)
+    "> Cart Quantity </button>
+
+    <button onclick="
+    cartQuantity+=1;
+    console.log(`Cart QUantity :$${cartQuantity}`)
+    "> Add To Cart </button>
+
+    <button onclick="
+    cartQuantity+=2;
+    console.log(`Cart Quantity : $${cartQuantity}`)">
+     +2 </button>
+
+    <button onclick="
+    cartQuantity+=3;
+    console.log(`Cart Qunatity : $${ cartQuantity}`)
+    "> +3 </button>
+
+    <button onclick="
+    cartQuantity+=4;
+    console.log(`Cart Qunatity : $${ cartQuantity}`)
+    "> +4 </button>
+
+    <button onclick="
+    cartQuantity+=5;
+    console.log(`Cart Qunatity : $${ cartQuantity}`)
+    "> +5 </button>
+
+    <button onclick="
+    cartQuantity--;
+    console.log(`Cart Quantity : $${ cartQuantity}`)"> Remove
+    </button>
+
+    <button onclick="
+    console.log('Cart Was Reset')
+    console.log(`Cart Qunatity : $${cartQuantity = 0}`)
+    "> reset </button>
+
+    <button onclick="
+    cartQuantity-=2;
+    console.log(`Cart Quantity : ${cartQuantity}`)"> -2 </button>
+
+    <button onclick="
+    cartQuantity-=3;
+    console.log(`Cart Quantity : ${cartQuantity}`)"> -3 </button>
+    <script>
+      let cartQuantity = 0;
+
+
+    </script>
+  </body>
+</html>

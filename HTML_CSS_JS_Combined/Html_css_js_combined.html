@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Html Css Js Combined </title>
+    <style>
+      .subscribe_button{
+        border:none;
+        background-color:black;
+        color:white;
+        padding: 10px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 50px;
+      }
+      .is_subscribed{
+        border:yellow;
+        background-color:red;
+        color:white;
+        padding: 10px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 50px;
+      }
+
+      .para{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="para"> Welcome To My Youtube Channel</p>
+    <button class="subscribe_button "
+    onclick="subscribe()"> Subscribe </button>
+    <script>
+      function subscribe(){
+        const buttonElement = document.querySelector('.subscribe_button')
+        if(buttonElement.innerHTML==="Subscribe"){
+          buttonElement.innerHTML="Subscribed";
+          buttonElement.classList.add('is_subscribed');
+        }else{
+          buttonElement.innerHTML="Subscribe"
+          buttonElement.classList.remove('is_subscribed')
+          
+        }
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cart Quantity</title>
+
+    <style>
+      .para {
+        font-size: large;
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <p class="para">Cart Quantity</p>
+
+    <!-- SHOW QUANTITY -->
+    <button onclick="
+      console.log(`Cart Quantity : ${cartQuantity}`);
+    ">
+      Cart Quantity
+    </button>
+
+    <!-- ADD BUTTONS -->
+    <button onclick="
+      updateCart(1);
+    ">
+      Add To Cart
+    </button>
+
+    <button onclick="
+      updateCart(2);
+    ">
+      +2
+    </button>
+
+    <button onclick="
+      updateCart(3);
+    ">
+      +3
+    </button>
+
+    <button onclick="
+      updateCart(4);
+    ">
+      +4
+    </button>
+
+    <button onclick="
+      updateCart(5);
+    ">
+      +5
+    </button>
+
+    <p></p>
+
+    <!-- REMOVE BUTTONS -->
+    <button onclick="
+      removeFromCart(1);
+    ">
+      Remove
+    </button>
+
+    <button onclick="
+      removeFromCart(2);
+    ">
+      -2
+    </button>
+
+    <button onclick="
+      removeFromCart(3);
+    ">
+      -3
+    </button>
+
+    <!-- RESET -->
+    <button onclick="
+      cartQuantity = 0;
+      console.log('Cart Was Reset');
+      console.log(`Cart Quantity : ${cartQuantity}`);
+    ">
+      Reset
+    </button>
+
+    <script>
+
+      let cartQuantity = 0;
+
+      // ADD ITEMS
+      function updateCart(value) {
+
+        if (cartQuantity + value > 10) {
+          console.log('Cart is Full');
+          alert('Max Cart Quantity is 10');
+        } else {
+          cartQuantity += value;
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }
+
+      }
+
+      // REMOVE ITEMS
+      function removeFromCart(value) {
+
+        if (cartQuantity - value < 0) {
+          console.log('Not enough items in the cart');
+          alert('Cart quantity cannot go below 0');
+        } else {
+          cartQuantity -= value;
+          console.log(`Cart Quantity : ${cartQuantity}`);
+        }
+
+      }
+
+    </script>
+
+  </body>
+</html>
