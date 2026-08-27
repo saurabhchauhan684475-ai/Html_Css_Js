@@ -1,0 +1,23 @@
+/*Create an Array of strings , loop over the array and check if the string 'search' is inside the array. If it is console.log() the index of 'search' in the array if not , console.log('-1')*/
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Search Array </title>
+  </head>
+  <body>
+    <script>
+      const array1 = ["apple", "banana", "cherry", "date", "fig", "grape", "search"];
+      let found = false;
+      for(let i=0;i<array1.length;i++){
+        const arrays =array1[i];
+        if(arrays === "search"){
+          console.log(i);
+          found = true;
+          break;
+      }
+    }
+    
+    </script>
+  </body>
+</html>

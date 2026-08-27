@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Remove Egg </title>
+  </head>
+  <body>
+    <script>
+      function removeEgg(foods){
+        let array1 = [];
+        let eggsRemoved = 0;
+        for(let i=0;i<foods.length;i++){
+          const food = foods[i];
+          if(food==="egg" && eggsRemoved<4){
+            eggsRemoved++;     
+            continue;
+          }
+          array1.push(food);
+      }
+      array1.reverse();
+      return array1;
+    }
+    console.log(removeEgg(["egg","ggg","egg","egg","egg","egg","egg","egg","egg"]));
+    </script>
+  </body>
+</html>

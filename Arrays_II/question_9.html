@@ -1,0 +1,37 @@
+/<!DOCTYPE html>
+<html>
+  <head>
+    <title> Find Index  </title>
+  </head>
+  <body>
+    <script>
+    function findIndex(array , word){
+      let found = false;
+      for(let i=0;i<array.length;i++){
+        const arrays =array[i];
+        if(arrays===word){
+          found = true;
+          return i;
+        }
+      }
+      if(!found){
+        return -1;
+      }
+    }
+
+    function unique(array){
+      let uniqueArray = [];
+      for(let i=0;i<array.length;i++){
+        const values =array[i];
+        if(findIndex(uniqueArray,values)===-1){
+          uniqueArray.push(values);
+        }
+      }
+      return uniqueArray;
+
+    }
+    console.log(findIndex(["apple", "banana", "cherry", "date", "fig", "grape", "search"],"yellow"));
+    console.log(unique(["apple", "banana","banana","banana", "cherry", "date", "fig", "grape", "search"],"yellow"));
+    </script>
+    </body>
+</html>
