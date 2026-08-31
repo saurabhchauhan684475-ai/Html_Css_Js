@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Start </title>
+  </head>
+  <button onclick="StartAgain();Start();"> Start </button>
+  <body>
+    <script>
+
+      function StartAgain(){
+        const buttonElement = document.querySelector("button");
+        if(buttonElement.innerHTML==='Start'){
+          buttonElement.innerHTML='Loading...'
+        }else{
+          buttonElement.innerHTML='Start'
+        }
+      }
+      
+      function Start(){
+        setTimeout(function(){
+          const buttonElement = document.querySelector("button");
+          buttonElement.innerHTML = "Finished";
+        }, 3000);
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add</title>
+    <button onclick="Added()"> Add To Cart </button>
+    <p > Added </p>
+  </head>
+  <body>
+    <script>
+      const buttonElement = document.querySelector('button');
+      function Added(){
+        if(buttonElement.innerHTML==='Add To Cart'){
+          buttonElement.innerHTML='Added'
+        }else{
+          buttonElement.innerHTML='Add To Cart'
+        }
+        setInterval(function(){
+          buttonElement.innerHTML='Removedd'},3000)
+        }
+        
+      
+    </script>
+  </body>
+</html>

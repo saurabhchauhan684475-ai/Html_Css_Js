@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add</title>
+    <button onclick="Added()"> Add To Cart </button>
+    <p > Added </p>
+  </head>
+  <body>
+    <script>
+      const buttonElement = document.querySelector('button');
+      function Added(){
+        if(buttonElement.innerHTML==='Add To Cart'){
+          buttonElement.innerHTML='Added'
+          setTimeout(function(){
+          locaation.reload();},3000)
+        }
+        else{
+          buttonElement.innerHTML='Add To Cart'
+        }
+      }
+        
+        
+      
+    </script>
+  </body>
+</html>

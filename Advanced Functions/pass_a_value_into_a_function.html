@@ -1,0 +1,18 @@
+<script>
+  function display(param){
+    console.log(param);
+  }
+  display("Hello World")
+
+  function display2(param){
+    param();
+  }
+  display2(function(){
+    console.log("Hey Bitch");
+  })
+
+  setTimeout(function(){
+    console.log("Hey Bitch");
+  },5000)
+</script>
+

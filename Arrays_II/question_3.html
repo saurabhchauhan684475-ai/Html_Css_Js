@@ -11,14 +11,15 @@
         const arrays =array[i];
         if(arrays===word){
           found = true;
-          return i;
+          console.log(i);
+          console.log(word);
         }
       }
       if(!found){
         return -1;
       }
     }
-    console.log(findIndex(["apple", "banana", "cherry", "date", "fig", "grape", "search"],"yellow"));
+    console.log(findIndex(["apple", "banana", "cherry","yellow", "date", "fig", "grape", "search"],"yellow"));
     </script>
     </body>
 </html>

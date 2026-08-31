@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Start</title>
+  </head>
+
+  <body>
+
+    <script>
+      let title = true;
+
+      setInterval(function() {
+        if (title) {
+          document.title = 'Hello';
+        } else {
+          document.title = 'Welcome';
+        }
+
+        title = !title;
+      }, 1000);
+    </script>
+
+  </body>
+</html>

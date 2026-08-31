@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> New Messages </title>
+  </head>
+  <body> 
+    <button onclick="Add();"> Add </button>
+  <button onclick="Remove();"> Remove </button>
+  <script>
+    let messages = 2;
+    function Add(){
+      messages = messages +1;
+    }
+    function Remove(){
+      if(messages>0){
+      messages = messages-1;
+    }
+  }
+    setInterval(function(){
+      if(messages===1){
+        document.title='1 New Message'
+      }else if(messages>1){
+        document.title=messages+' New Messages'
+      }else{document.title="Alert"}
+    },1000)
+  </script>
+</body>
+</html>

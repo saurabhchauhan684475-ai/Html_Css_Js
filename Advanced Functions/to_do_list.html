@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="to_do_list.css" />
+  </head>
+
+  <body>
+    <p>To Do List</p>
+    <div class="todo_input_grid">
+      <input placeholder="To Do Name"
+      class="js_name_input name_input" />
+      <input type="date"
+      class="js_date_input date_input" />
+      <button onclick="addToDo()"
+      class = "add_todo_button">
+      Add To Do
+      </button>
+    </div>
+
+    <div class="js_todo_list todo_grid"></div>
+
+    <script src="to_do_list.js"></script>
+  </body>
+</html>
