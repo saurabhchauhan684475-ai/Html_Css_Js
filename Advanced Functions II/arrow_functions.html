@@ -1,0 +1,29 @@
+<body>
+  <script>
+    const arrowFunction = () =>{
+      console.log('hello4')
+    }
+    arrowFunction();
+
+    const oneParam=(param)=>{
+      console.log(param+1);
+    }
+    oneParam('hello')
+
+    const soloDolo = ()=>2+3;
+    console.log(soloDolo());
+
+  [
+  'make dinner',
+  'wash dishes',
+  'do laundry',
+  'take out trash',
+].forEach((value, index) => {
+
+  if (value === 'wash dishes') {
+    console.log(`I am at index ${index} and I will ${value}`);
+  }
+
+  console.log(index);
+  console.log(value);
+});

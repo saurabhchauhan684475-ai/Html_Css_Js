@@ -1,0 +1,14 @@
+<body>
+  <button class="js_hello"> Hello </button>
+  <script>
+    const buttonElement = document.querySelector('.js_hello');
+    const buttonFunction = ()=>{
+      console.log('Hello');
+    }
+    buttonElement.addEventListener('click', buttonFunction);
+    buttonElement.addEventListener('click', () => {
+      console.log('Hello67545');
+    });
+    buttonElement.removeEventListener('click', buttonFunction);
+  </script>
+</body>

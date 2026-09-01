@@ -10,33 +10,24 @@
 
   <p class="para js_score">Rock Paper Scissors</p>
 
-  <button onclick="playGame('Rock')"
-  img src="rock_emoji.png"
-  class="move_icon move_button">
+  <button img src="rock_emoji.png"
+  class="move_icon move_button js_rock_button">
     Rock
   </button>
 
-  <button onclick="playGame('Paper')"
-  img src="paper.png"
-  class="move_icon move_button">
+  <button img src="paper.png"
+  class="move_icon move_button js_paper_button">
     Paper
   </button>
 
-  <button onclick="playGame('Scissors')"
-  img src="scissors_emoji.png"
-  class="move_icon move_button">
+  <button img src="scissors_emoji.png"
+  class="move_icon move_button js_scissors_button">
     Scissors
   </button>
   <p></p>
 
-  <button onclick="
-  score.wins = 0;
-  score.losses = 0;
-  score.ties = 0;
-  alert('The Score was Reset')"
-  class = "reset_button"> Reset </button>
-  <button class="auto_play_button"
-  onclick="autoPlay()"> Auto Play </button>
+  <button class = "reset_button js_reset_button"> Reset </button>
+  <button class="auto_play_button js_auto_play_button"> Auto Play </button>
 
   <script src="rps.js"></script>"
 

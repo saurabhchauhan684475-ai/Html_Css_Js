@@ -3,6 +3,10 @@ let score = {
       losses : 0,
       ties : 0,
     }
+    function updateScore(){
+        document.querySelector('.js_score').innerHTML = `Wins:${score.wins} , Losses:${score.losses} , Ties:${score.ties}`;
+      }
+      updateScore();
     function pickComputerMove() {
       let randomNumber = Math.random();
       let computerMove = '';
@@ -15,11 +19,51 @@ let score = {
       }
       return computerMove;
     }
+
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r') {
+    playGame('Rock');
+  } else if (event.key === 'p') {
+    playGame('Paper');
+  } else if (event.key === 's') {
+    playGame('Scissors');
+  } 
+});
+
+const rockButton = document.querySelector('.js_rock_button');
+rockButton.addEventListener('click', () => {
+  playGame('Rock');
+});
+
+const paperButton = document.querySelector('.js_paper_button'); 
+paperButton.addEventListener('click', () => {
+  playGame('Paper');
+});
+
+const scissorsButton = document.querySelector('.js_scissors_button');
+scissorsButton.addEventListener('click', () => {
+  playGame('Scissors');
+}); 
+
+const resetButton = document.querySelector('.js_reset_button');
+resetButton.addEventListener('click', () => {
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  updateScore();
+  alert('The Score was Reset')
+});
+
+const autoPlayButton = document.querySelector('.js_auto_play_button');
+autoPlayButton.addEventListener('click', () => {
+  autoPlay();
+});
+
     let isAutoPlaying = false;
     let intervalId;
     function autoPlay() {
       if(!isAutoPlaying){
-      intervalId = setInterval(function() {
+      intervalId = setInterval(()=>{
         let playerMove = pickComputerMove();
         playGame(playerMove);
       }, 1000);
@@ -66,9 +110,6 @@ let score = {
         score.losses+=1;
       }else if(result === 'Tie'){
         score.ties+=1
-      }
-      function updateScore(){
-        document.querySelector('.js_score').innerHTML = `Wins:${score.wins} , Losses:${score.losses} , Ties:${score.ties}`;
       }
       updateScore();
       alert(`You picked ${playerMove}. Computer picked  ${computerMove} . ${ result}
