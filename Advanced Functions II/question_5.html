@@ -1,0 +1,11 @@
+<body>
+  <script>
+    function removeEgg(food){
+      return food.filter((value,index)=>{
+          return value!=='egg';
+        })
+      }
+    let result =removeEgg(['egg','milk','butter','egg','flour']);
+    console.log(result);
+  </script>
+</body>

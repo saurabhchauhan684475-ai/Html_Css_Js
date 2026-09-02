@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Start </title>
+  </head>
+  <button onclick="Start();"> Start </button>
+  <body>
+    <script>
+      function Start(){
+        setTimeout(()=>{
+          const buttonElement = document.querySelector("button");
+          buttonElement.innerHTML = "Finished";
+        }, 3000);
+      }
+
+    </script>
+  </body>
+</html>

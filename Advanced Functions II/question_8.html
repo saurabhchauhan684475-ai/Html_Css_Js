@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Start </title>
+  </head>
+  <button
+  class="js_start_again"> Start </button>
+  <body>
+    <script>
+
+      function StartAgain(){
+        const buttonElement = document.querySelector("button");
+        if(buttonElement.innerHTML==='Start'){
+          buttonElement.innerHTML='Loading...'
+        }else{
+          buttonElement.innerHTML='Start'
+        }
+      }
+
+      const startAgainButton = document.querySelector('.js_start_again');
+      startAgainButton.addEventListener('click', ()=>{
+        StartAgain();
+        Start();
+      });
+      
+      function Start(){
+        setTimeout(function(){
+          const buttonElement = document.querySelector("button");
+          buttonElement.innerHTML = "Finished";
+        }, 1500);
+      }
+
+    </script>
+  </body>
+</html>

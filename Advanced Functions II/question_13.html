@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Rock Paper Scissors</title>
+    <style>
+      body{
+        background-color:WHITE;
+        margin-color: darkgrey;
+      }
+      .para{
+        font-size: 30px;
+        font-style:bold;
+      }
+      .style_button{
+        display: inline-block;
+        width: 500px;
+        height: 500px;
+        margin: 10px;
+      }
+
+      .style_button img{
+        background-color: black;
+        width: 100%;
+        height: 100%;
+      }
+      .style_button1{
+        display: inline-block;
+        width: 200px;
+        height: 50px;
+        margin: 10px;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body>
+  <p class="para js_para"> Rock Paper Scissors </p>
+  <button class="style_button js_rock">
+    <img src="rock_emoji.png"></button>
+  <button class="style_button js_paper"> 
+    <img src ="paper_emoji.png"></button>
+  <button class="style_button js_scissors"> <img src="scissors_emoji.webp"></button>
+  <p></p>
+  <p class="para js_para1"></p>
+  <button class="style_button1 js_reset"> Reset </button>
+  <button class="style_button1 js_autoplay"> Auto Play </button>
+
+  <script>
+    let score ={
+      wins:0,
+      loses:0,
+      ties :0,
+    }
+    function pickComputerMove(){
+      let randomNumber = Math.random();
+      let computerMove = '';
+      if(randomNumber>=0 && randomNumber<1/3){
+        computerMove = 'rock';
+      } else if(randomNumber>=1/3 && randomNumber<2/3){
+        computerMove = 'paper';
+      } else {
+        computerMove = 'scissors';
+      }
+      return computerMove;
+    }
+
+    function playGame(playerMove){
+      const computerMove = pickComputerMove();
+      let result = '';
+      if(playerMove==='rock'){
+        if(computerMove==='rock'){
+          result = 'Tie.';
+        } else if(computerMove==='paper'){
+          result = 'You lose.';
+        } else if(computerMove==='scissors'){
+          result = 'You win.';
+        }
+      } else if(playerMove==='paper'){
+        if(computerMove==='rock'){
+          result = 'You win.';
+        } else if(computerMove==='paper'){
+          result = 'Tie.';
+        } else if(computerMove==='scissors'){
+          result = 'You lose.';
+        }
+      } else if(playerMove==='scissors'){
+        if(computerMove==='rock'){
+          result = 'You lose.';
+        } else if(computerMove==='paper'){
+          result = 'You win.';
+        } else if(computerMove==='scissors'){
+          result = 'Tie.';
+        }
+      }
+
+      if(result ==='You win.'){
+        score.wins += 1;
+      } else if(result ==='You lose.'){
+        score.loses += 1;
+      } else {
+        score.ties += 1;
+      }
+       document.querySelector('.js_para1').innerHTML = `Player chose ${playerMove}, Computer chose ${computerMove}. ${result}`;
+    }
+    function updateScore(){
+      document.querySelector('.js_para').innerHTML = `Wins: ${score.wins}, Loses: ${score.loses}, Ties: ${score.ties}`;
+    }
+    updateScore();
+    let isAutoPlaying = false;
+    let intervalId;
+    function autoPlay(){
+      if(!isAutoPlaying){
+        intervalId = setInterval(()=>{
+          const playerMove = pickComputerMove();
+          playGame(playerMove);
+          autoPlayButton.innerHTML = 'Stop Playing';
+          updateScore();
+        }, 1000);
+        isAutoPlaying = true;
+      } else {
+        clearInterval(intervalId);
+        autoPlayButton.innerHTML = 'Auto Play';
+        isAutoPlaying = false;
+      }
+    }
+
+    const rockButton = document.querySelector('.js_rock');
+    rockButton.addEventListener('click', ()=>{  
+      playGame('rock');
+      updateScore();
+    });
+
+    const paperButton = document.querySelector('.js_paper');
+    paperButton.addEventListener('click', ()=>{   
+      playGame('paper');
+      updateScore();
+    }); 
+
+    const scissorsButton = document.querySelector('.js_scissors');
+    scissorsButton.addEventListener('click', ()=>{
+      playGame('scissors');
+      updateScore();
+    });
+
+    const resetButton = document.querySelector('.js_reset');
+    resetButton.addEventListener('click', ()=>{
+      score.wins = 0;
+      score.loses = 0;
+      score.ties = 0;
+      alert('Score has been reset.');
+      updateScore();
+    });
+
+    const autoPlayButton = document.querySelector('.js_autoplay');
+    autoPlayButton.addEventListener('click', ()=>{
+      autoPlay();
+    });
+
+    document.body.addEventListener('keydown', (event)=>{
+      if(event.key === 'r'){
+        playGame('rock');
+        updateScore();
+      } else if(event.key === 'p'){
+        playGame('paper');
+        updateScore();
+      } else if(event.key === 's'){
+        playGame('scissors');
+        updateScore();
+      } else if(event.key==='a'){
+        autoPlay();
+      }
+    });
+
+  </script>
+  </body> 
+</html>
