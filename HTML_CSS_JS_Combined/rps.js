@@ -112,7 +112,4 @@ autoPlayButton.addEventListener('click', () => {
         score.ties+=1
       }
       updateScore();
-      alert(`You picked ${playerMove}. Computer picked  ${computerMove} . ${ result}
-      Wins : ${score.wins} , Losses : ${score.losses} , Ties :${score.ties}`);
-
     }
