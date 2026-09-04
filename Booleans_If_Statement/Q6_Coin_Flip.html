@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Coin Flip</title>
+  </head>
+  <body>
+    <button class = "heads"> Heads </button>
+    <button class = "tails"> Tails </button>
+    <script>
+      function pickComputerMove(){
+        let randomNumber = Math.random();
+        let computerMove = '';
+        if(randomNumber>=0 && randomNumber<=1/2){
+          computerMove = 'Heads'; 
+        } else {
+          computerMove = 'Tails';
+        }
+        return computerMove;
+      }
+
+      function playGame(playerMove){
+        let computerMove = pickComputerMove();
+        let result = '';
+        if(playerMove === 'Heads'){
+          if(computerMove === 'Heads'){
+            result = 'You Win';
+          } else {
+            result = 'You Lose';
+          }
+        } else if(playerMove === 'Tails'){
+          if(computerMove === 'Tails'){
+            result = 'You Win';
+          } else {
+            result = 'You Lose';
+          }
+        }
+        alert(`You picked:${playerMove}, Computer picked: ${computerMove}, Result: ${result}`);
+      }
+
+      const headsButton = document.querySelector('.heads');
+      const tailsButton = document.querySelector('.tails');
+      headsButton.addEventListener('click', function() {
+        playGame('Heads');
+      });
+      tailsButton.addEventListener('click', function() {
+        playGame('Tails');
+      });
+    </script>
+  </body>
+</html>
