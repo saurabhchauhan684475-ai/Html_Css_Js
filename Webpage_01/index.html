@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QueueSetu | Smart Farmer Procurement</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <div class="logo-icon">Q</div>
+        <div>
+            <h2>QueueSetu</h2>
+            <span>Smart Procurement</span>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#booking">Book Slot</a>
+        <a href="#tracking">Track Token</a>
+        <a href="#dashboard">Officer</a>
+    </div>
+
+    <button class="language-btn">हिंदी / EN</button>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🌾 Smart India Hackathon 2026
+        </div>
+
+        <h1>
+            Skip the waiting.<br>
+            <span>Book your procurement slot.</span>
+        </h1>
+
+        <p>
+            QueueSetu helps farmers book procurement slots,
+            receive digital tokens and track their position
+            in real time.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#booking" class="btn primary">
+                Book a Slot →
+            </a>
+
+            <a href="#tracking" class="btn secondary">
+                Track Token
+            </a>
+        </div>
+
+        <div class="trust-row">
+            <div>
+                <strong>24/7</strong>
+                <small>Slot Booking</small>
+            </div>
+
+            <div>
+                <strong>SMS</strong>
+                <small>Farmer Alerts</small>
+            </div>
+
+            <div>
+                <strong>Live</strong>
+                <small>Queue Tracking</small>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="card-top">
+            <span>LIVE QUEUE</span>
+            <span class="live-dot">● LIVE</span>
+        </div>
+
+        <h3>Kanpur Procurement Centre</h3>
+
+        <div class="queue-number">
+            <span>Now Serving</span>
+            <strong id="heroQueue">A120</strong>
+        </div>
+
+        <div class="progress">
+            <div></div>
+        </div>
+
+        <div class="queue-stats">
+            <div>
+                <strong>18</strong>
+                <span>Waiting</span>
+            </div>
+
+            <div>
+                <strong>~35 min</strong>
+                <span>Avg. Wait</span>
+            </div>
+
+            <div>
+                <strong>74</strong>
+                <span>Served Today</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="section">
+
+    <div class="section-heading">
+        <span>HOW IT WORKS</span>
+        <h2>Procurement without the queue.</h2>
+        <p>Three simple steps for farmers.</p>
+    </div>
+
+    <div class="steps">
+
+        <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">📅</div>
+            <h3>Book a Slot</h3>
+            <p>Select your procurement centre, date and convenient time slot.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">🎟️</div>
+            <h3>Get Your Token</h3>
+            <p>Receive a digital token instantly after successful booking.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">📱</div>
+            <h3>Track Your Turn</h3>
+            <p>Monitor your queue position and receive an alert when your turn approaches.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+
+    <div class="section-heading">
+        <span>FARMER PORTAL</span>
+        <h2>Book Your Procurement Slot</h2>
+        <p>Enter your details and choose a convenient slot.</p>
+    </div>
+
+
+    <div class="booking-container">
+
+        <form id="bookingForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Farmer Name</label>
+                    <input
+                        type="text"
+                        id="farmerName"
+                        placeholder="Enter your name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input
+                        type="tel"
+                        id="mobile"
+                        placeholder="10-digit mobile number"
+                        maxlength="10"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Procurement Centre</label>
+
+                    <select id="centre" required>
+                        <option value="">Select centre</option>
+                        <option>Kanpur Wheat Procurement Centre</option>
+                        <option>Kidwai Nagar Procurement Centre</option>
+                        <option>Koyla Nagar Procurement Centre</option>
+                        <option>Shyam Nagar Procurement Centre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Procurement Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label>Choose Time Slot</label>
+
+                <div class="slots">
+
+                    <button type="button" class="slot" data-time="09:00 AM - 10:00 AM">
+                        09:00 AM<br>
+                        <small>10 slots left</small>
+                    </button>
+
+                    <button type="button" class="slot" data-time="10:00 AM - 11:00 AM">
+                        10:00 AM<br>
+                        <small>7 slots left</small>
+                    </button>
+
+                    <button type="button" class="slot" data-time="11:00 AM - 12:00 PM">
+                        11:00 AM<br>
+                        <small>14 slots left</small>
+                    </button>
+
+                    <button type="button" class="slot" data-time="12:00 PM - 01:00 PM">
+                        12:00 PM<br>
+                        <small>5 slots left</small>
+                    </button>
+
+                    <button type="button" class="slot" data-time="02:00 PM - 03:00 PM">
+                        02:00 PM<br>
+                        <small>18 slots left</small>
+                    </button>
+
+                    <button type="button" class="slot" data-time="03:00 PM - 04:00 PM">
+                        03:00 PM<br>
+                        <small>11 slots left</small>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <input type="hidden" id="selectedSlot">
+
+            <button class="btn primary full-btn" type="submit">
+                Generate Digital Token →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- TOKEN -->
+<section class="token-section hidden" id="tokenSection">
+
+    <div class="token-card">
+
+        <div class="success-icon">✓</div>
+
+        <span class="success-label">BOOKING CONFIRMED</span>
+
+        <h2>Your Digital Token</h2>
+
+        <div class="token-number" id="tokenNumber">
+            A127
+        </div>
+
+        <div class="token-details">
+
+            <div>
+                <span>Farmer</span>
+                <strong id="displayName">Farmer</strong>
+            </div>
+
+            <div>
+                <span>Centre</span>
+                <strong id="displayCentre">Kanpur</strong>
+            </div>
+
+            <div>
+                <span>Time Slot</span>
+                <strong id="displaySlot">10:00 AM</strong>
+            </div>
+
+        </div>
+
+
+        <div class="queue-position">
+
+            <div>
+                <span>Your Position</span>
+                <strong id="position">07</strong>
+            </div>
+
+            <div>
+                <span>Now Serving</span>
+                <strong id="currentToken">A120</strong>
+            </div>
+
+            <div>
+                <span>Estimated Wait</span>
+                <strong id="waitTime">35 min</strong>
+            </div>
+
+        </div>
+
+
+        <div class="alert-box">
+            📱 <strong>SMS Alert Enabled</strong>
+            <br>
+            You will receive an alert when your turn is approaching.
+        </div>
+
+        <button class="btn primary" onclick="scrollToTracking()">
+            Track Live Queue →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- TRACKING -->
+<section class="tracking-section" id="tracking">
+
+    <div class="section-heading">
+        <span>LIVE TRACKING</span>
+        <h2>Track Your Token</h2>
+        <p>Know exactly when it's your turn.</p>
+    </div>
+
+
+    <div class="tracking-card">
+
+        <div class="tracking-header">
+            <div>
+                <span>Your Token</span>
+                <h2 id="trackingToken">A127</h2>
+            </div>
+
+            <div class="live-badge">
+                ● LIVE
+            </div>
+        </div>
+
+
+        <div class="big-position">
+
+            <span>Your Position</span>
+
+            <strong id="livePosition">
+                07
+            </strong>
+
+            <p>people ahead of you</p>
+
+        </div>
+
+
+        <div class="queue-line">
+
+            <div class="queue-item completed">
+                <span>✓</span>
+                <p>Previous tokens</p>
+            </div>
+
+            <div class="queue-item current">
+                <span id="liveCurrent">A120</span>
+                <p>Now Serving</p>
+            </div>
+
+            <div class="queue-item next">
+                <span id="liveNext">A127</span>
+                <p>Your Turn</p>
+            </div>
+
+        </div>
+
+
+        <div class="wait-box">
+
+            <div>
+                <span>Estimated Wait</span>
+                <strong id="liveWait">~35 minutes</strong>
+            </div>
+
+            <div>
+                <span>Queue Status</span>
+                <strong class="green">Moving normally</strong>
+            </div>
+
+        </div>
+
+
+        <button class="btn secondary" id="simulateBtn">
+            Simulate Queue Movement
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- OFFICER DASHBOARD -->
+<section class="dashboard-section" id="dashboard">
+
+    <div class="section-heading">
+        <span>OFFICER PORTAL</span>
+        <h2>Procurement Centre Dashboard</h2>
+        <p>Manage the queue from one place.</p>
+    </div>
+
+
+    <div class="dashboard-grid">
+
+        <div class="stat-card">
+            <span>NOW SERVING</span>
+            <strong id="dashboardCurrent">A120</strong>
+            <small>Counter 01</small>
+        </div>
+
+        <div class="stat-card">
+            <span>WAITING</span>
+            <strong id="waitingCount">18</strong>
+            <small>Farmers in queue</small>
+        </div>
+
+        <div class="stat-card">
+            <span>SERVED TODAY</span>
+            <strong id="servedCount">74</strong>
+            <small>Successful procurements</small>
+        </div>
+
+        <div class="stat-card">
+            <span>AVG. WAIT</span>
+            <strong>~35 min</strong>
+            <small>Current estimate</small>
+        </div>
+
+    </div>
+
+
+    <div class="dashboard-panel">
+
+        <div class="panel-header">
+            <div>
+                <span>QUEUE MANAGEMENT</span>
+                <h3>Live Farmer Queue</h3>
+            </div>
+
+            <span class="status-online">
+                ● System Online
+            </span>
+        </div>
+
+
+        <div class="queue-table">
+
+            <div class="table-row table-head">
+                <span>Token</span>
+                <span>Farmer</span>
+                <span>Status</span>
+            </div>
+
+            <div class="table-row">
+                <span>A120</span>
+                <span>Ramesh Kumar</span>
+                <span class="served">SERVING</span>
+            </div>
+
+            <div class="table-row">
+                <span>A121</span>
+                <span>Suresh Singh</span>
+                <span class="waiting">WAITING</span>
+            </div>
+
+            <div class="table-row">
+                <span>A122</span>
+                <span>Mahesh Yadav</span>
+                <span class="waiting">WAITING</span>
+            </div>
+
+            <div class="table-row">
+                <span>A123</span>
+                <span>Rajesh Verma</span>
+                <span class="waiting">WAITING</span>
+            </div>
+
+        </div>
+
+
+        <button class="btn primary full-btn" id="serveNext">
+            ✓ Serve Next Farmer
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="logo">
+        <div class="logo-icon">Q</div>
+        <div>
+            <h2>QueueSetu</h2>
+            <span>Smart Farmer Procurement</span>
+        </div>
+    </div>
+
+    <p>
+        Built for Smart India Hackathon 2026
+    </p>
+
+</footer>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <span>✓</span>
+    <p id="toastMessage">Success</p>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
