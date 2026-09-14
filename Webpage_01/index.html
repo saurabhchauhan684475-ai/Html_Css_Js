@@ -632,6 +632,392 @@ li { margin-bottom: 0.5rem; }
 .ref-plain { color: var(--ink-soft); }
 
 
+/* ============ FARMER DEMO ============ */
+ 
+.demo-shell {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+}
+ 
+.demo-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 1.3rem 1.8rem;
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--line);
+}
+ 
+.demo-track-step {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+ 
+.demo-track-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+ 
+.demo-track-step.is-current .demo-track-dot {
+    background: var(--wheat);
+    border-color: var(--wheat);
+    color: var(--leaf-deep);
+}
+ 
+.demo-track-step.is-done .demo-track-dot {
+    background: var(--leaf);
+    border-color: var(--leaf);
+    color: var(--white);
+}
+ 
+.demo-track-step.is-current span:last-child { color: var(--leaf-deep); }
+ 
+.demo-track-line {
+    flex: 1;
+    height: 1.5px;
+    background: var(--line);
+    margin: 0 10px;
+    position: relative;
+    min-width: 20px;
+}
+ 
+.demo-track-line i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--leaf);
+    transition: width 0.3s ease;
+}
+ 
+.demo-track-step.is-done + .demo-track-line i,
+.demo-track-line.is-filled i { width: 100%; }
+ 
+.demo-body {
+    padding: 2.2rem 2.4rem 2.5rem;
+}
+ 
+.demo-step { display: none; }
+.demo-step.is-active { display: block; animation: rise 0.3s ease; }
+ 
+.demo-heading {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--leaf-deep);
+    margin-bottom: 6px;
+}
+ 
+.demo-subtext {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 1.8rem;
+    max-width: 52ch;
+}
+ 
+.demo-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+    margin-bottom: 1.6rem;
+}
+ 
+.demo-field { display: flex; flex-direction: column; gap: 7px; }
+.demo-field.is-full { grid-column: 1 / -1; }
+ 
+.demo-field label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+}
+ 
+.demo-field input,
+.demo-field select {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 11px 13px;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+ 
+.demo-field input::placeholder { color: #A9A190; }
+ 
+.demo-field input:focus,
+.demo-field select:focus {
+    outline: none;
+    border-color: var(--leaf);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(47, 82, 51, 0.12);
+}
+ 
+.demo-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23566151' stroke-width='1.6' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 34px;
+    cursor: pointer;
+}
+ 
+.demo-field-error {
+    font-size: 11.5px;
+    color: var(--rust);
+    min-height: 14px;
+}
+ 
+.demo-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 0.4rem;
+}
+ 
+.btn-primary {
+    background: var(--leaf);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px 26px;
+    border-radius: 8px;
+    transition: background 0.15s, transform 0.1s;
+}
+ 
+.btn-primary:hover { background: var(--leaf-deep); }
+.btn-primary:active { transform: scale(0.98); }
+ 
+.btn-ghost {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    padding: 13px 10px;
+    border-radius: 8px;
+    transition: color 0.15s;
+}
+ 
+.btn-ghost:hover { color: var(--leaf-deep); }
+ 
+/* appointment summary rows re-use .id-card look */
+.demo-appointment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.8rem;
+}
+ 
+.appt-card {
+    background: var(--paper-deep);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+}
+ 
+.appt-card span {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--wheat);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+ 
+.appt-card strong {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--leaf-deep);
+    font-weight: 600;
+}
+ 
+/* waiting / live queue */
+.wait-card {
+    background: var(--leaf-deep);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.6rem;
+}
+ 
+.wait-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--wheat-soft);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+ 
+.wait-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #E8A15C;
+    animation: pulse-dot 1.4s infinite;
+}
+ 
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(232,161,92,0.5); }
+    50% { opacity: 0.6; }
+}
+ 
+.wait-position {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+}
+ 
+.wait-position span {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: #C9D8C6;
+    margin-left: 6px;
+}
+ 
+.wait-copy { max-width: 30ch; font-size: 13px; color: #C9D8C6; text-align: right; }
+.wait-copy strong { display: block; color: var(--paper); font-size: 14.5px; margin-bottom: 3px; }
+ 
+.wait-progress {
+    height: 6px;
+    background: var(--paper-deep);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 1.8rem;
+}
+ 
+.wait-progress i {
+    display: block;
+    height: 100%;
+    background: var(--wheat);
+    border-radius: inherit;
+    width: 0%;
+    transition: width 0.6s ease;
+}
+ 
+.demo-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+}
+ 
+.demo-token-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+}
+ 
+.demo-token-chip strong {
+    font-family: var(--font-display);
+    color: var(--leaf-deep);
+    letter-spacing: 0.4px;
+}
+ 
+ 
+/* ============ TOKEN MODAL ============ */
+ 
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(33, 48, 31, 0.55);
+    backdrop-filter: blur(3px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 100;
+}
+ 
+.modal-overlay.is-open {
+    display: flex;
+    animation: fade-in 0.2s ease;
+}
+ 
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+ 
+.modal-box {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.4rem 2.2rem 2.1rem;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    animation: pop-in 0.25s cubic-bezier(0.2, 0.8, 0.3, 1.2);
+}
+ 
+@keyframes pop-in {
+    from { opacity: 0; transform: scale(0.92) translateY(6px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+ 
+.modal-check {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--wheat-soft);
+    color: var(--leaf-deep);
+    display: grid;
+    place-items: center;
+    margin: 0 auto 1.1rem;
+    font-size: 24px;
+}
+ 
+.modal-box h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--leaf-deep);
+    margin-bottom: 6px;
+}
+ 
+.modal-box p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 1.4rem;
+}
+ 
+.modal-token {
+    background: var(--paper-deep);
+    border-radius: 10px;
+    padding: 0.9rem;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--leaf-deep);
+    margin-bottom: 1.6rem;
+}
+ 
+.modal-box .btn-primary { width: 100%; }
+ 
+ 
 /* ============ PAGER ============ */
 
 .pager {
@@ -691,6 +1077,14 @@ li { margin-bottom: 0.5rem; }
     .flow { grid-template-columns: 1fr 1fr; }
 
     .pager { padding: 1rem 1.4rem; grid-column: 1; }
+
+    .demo-body { padding: 1.6rem 1.4rem 1.8rem; }
+    .demo-track { padding: 1rem 1.2rem; overflow-x: auto; }
+    .demo-track-step span:last-child { display: none; }
+    .demo-form, .demo-appointment { grid-template-columns: 1fr; }
+    .wait-card { flex-direction: column; align-items: flex-start; }
+    .wait-copy { text-align: left; }
+    .demo-summary { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 
 </style>
@@ -734,6 +1128,10 @@ li { margin-bottom: 0.5rem; }
       <button class="rail-item" data-target="page-6">
         <span class="rail-num">6</span>
         <span class="rail-label">Research &amp; References</span>
+      </button>
+      <button class="rail-item" data-target="page-7">
+        <span class="rail-num">7</span>
+        <span class="rail-label">Farmer Demo</span>
       </button>
     </nav>
 
@@ -1055,7 +1453,168 @@ li { margin-bottom: 0.5rem; }
 
     </section>
 
+
+    <!-- PAGE 7 — FARMER DEMO -->
+    <section class="page" id="page-7">
+
+      <p class="eyebrow">Try It Yourself</p>
+      <h2 class="page-title">Book a procurement slot as a farmer.</h2>
+      <p class="page-lede">A walk-through of the exact booking flow described on the earlier slides — enter a few details, get a token, pick a centre, and watch a live queue position update.</p>
+
+      <div class="demo-shell">
+
+        <div class="demo-track" id="demoTrack">
+          <div class="demo-track-step is-current" data-track="0">
+            <span class="demo-track-dot">1</span>
+            <span>Book slot</span>
+          </div>
+          <span class="demo-track-line"><i></i></span>
+          <div class="demo-track-step" data-track="1">
+            <span class="demo-track-dot">2</span>
+            <span>Choose centre</span>
+          </div>
+          <span class="demo-track-line"><i></i></span>
+          <div class="demo-track-step" data-track="2">
+            <span class="demo-track-dot">3</span>
+            <span>Confirmation</span>
+          </div>
+        </div>
+
+        <div class="demo-body">
+
+          <!-- STEP 1 — BOOKING FORM -->
+          <div class="demo-step is-active" id="demoStep1">
+
+            <h3 class="demo-heading">Your details</h3>
+            <p class="demo-subtext">This information is only used to generate a demo token — nothing is stored or sent anywhere.</p>
+
+            <div class="demo-form">
+              <div class="demo-field">
+                <label for="farmerName">Full name</label>
+                <input type="text" id="farmerName" placeholder="e.g. Ramesh Kumar">
+                <span class="demo-field-error" id="errName"></span>
+              </div>
+              <div class="demo-field">
+                <label for="farmerPhone">Phone number</label>
+                <input type="tel" id="farmerPhone" placeholder="10-digit mobile number" maxlength="10">
+                <span class="demo-field-error" id="errPhone"></span>
+              </div>
+              <div class="demo-field">
+                <label for="farmerCrop">Crop / produce</label>
+                <select id="farmerCrop">
+                  <option value="Wheat">Wheat</option>
+                  <option value="Paddy (Rice)">Paddy (Rice)</option>
+                  <option value="Mustard">Mustard</option>
+                  <option value="Maize">Maize</option>
+                  <option value="Sugarcane">Sugarcane</option>
+                  <option value="Cotton">Cotton</option>
+                </select>
+              </div>
+              <div class="demo-field">
+                <label for="farmerQty">Quantity (quintals)</label>
+                <input type="number" id="farmerQty" placeholder="e.g. 25" min="1">
+                <span class="demo-field-error" id="errQty"></span>
+              </div>
+            </div>
+
+            <div class="demo-actions">
+              <button class="btn-primary" id="confirmBookingBtn">Confirm booking</button>
+            </div>
+
+          </div>
+
+          <!-- STEP 2 — CHOOSE CENTRE + AUTO SLOT -->
+          <div class="demo-step" id="demoStep2">
+
+            <h3 class="demo-heading">Choose your procurement centre</h3>
+            <p class="demo-subtext">The Queue Engine assigns the next open slot automatically once a centre is picked.</p>
+
+            <div class="demo-form" style="margin-bottom: 0.6rem;">
+              <div class="demo-field is-full">
+                <label for="centreSelect">Procurement centre</label>
+                <select id="centreSelect">
+                  <option value="">Select a centre…</option>
+                  <option value="Sector 14 Mandi, Karnal">Sector 14 Mandi, Karnal</option>
+                  <option value="Anaj Mandi, Ambala">Anaj Mandi, Ambala</option>
+                  <option value="Rajpura Grain Market">Rajpura Grain Market</option>
+                  <option value="Kurukshetra Procurement Centre">Kurukshetra Procurement Centre</option>
+                  <option value="Pehowa Mandi">Pehowa Mandi</option>
+                </select>
+                <span class="demo-field-error" id="errCentre"></span>
+              </div>
+            </div>
+
+            <div class="demo-appointment" id="apptCards" style="opacity:0.4;">
+              <div class="appt-card">
+                <span>Date</span>
+                <strong id="apptDate">—</strong>
+              </div>
+              <div class="appt-card">
+                <span>Day</span>
+                <strong id="apptDay">—</strong>
+              </div>
+              <div class="appt-card">
+                <span>Time slot</span>
+                <strong id="apptTime">—</strong>
+              </div>
+              <div class="appt-card">
+                <span>Token</span>
+                <strong id="apptToken">—</strong>
+              </div>
+            </div>
+
+            <div class="demo-actions">
+              <button class="btn-primary" id="confirmCentreBtn">Confirm appointment</button>
+              <button class="btn-ghost" id="backToStep1">← Back</button>
+            </div>
+
+          </div>
+
+          <!-- STEP 3 — CONFIRMATION + WAITING -->
+          <div class="demo-step" id="demoStep3">
+
+            <h3 class="demo-heading">Slot confirmed</h3>
+            <p class="demo-subtext">An SMS with this token has gone out to the number on file. Here's what the farmer's live queue position looks like while they wait.</p>
+
+            <div class="wait-card">
+              <div>
+                <div class="wait-label"><span class="wait-dot"></span>Live queue position</div>
+                <div class="wait-position" id="waitPosition">8<span>farmers ahead</span></div>
+              </div>
+              <div class="wait-copy" id="waitCopy">
+                <strong id="waitCentreName">—</strong>
+                Position updates automatically as the counter serves each token.
+              </div>
+            </div>
+
+            <div class="wait-progress"><i id="waitProgressBar"></i></div>
+
+            <div class="demo-summary">
+              <span class="demo-token-chip">Token <strong id="summaryToken">—</strong> · <span id="summarySlot">—</span></span>
+              <button class="btn-ghost" id="restartDemoBtn">Start a new booking →</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
+
+
+  <!-- TOKEN GENERATED MODAL -->
+  <div class="modal-overlay" id="tokenModal">
+    <div class="modal-box">
+      <div class="modal-check">✓</div>
+      <h3>Your token was generated</h3>
+      <p>Hold on to this reference number — you'll need it at the procurement centre.</p>
+      <div class="modal-token" id="modalTokenValue">QS-000000</div>
+      <button class="btn-primary" id="modalOkBtn">OK</button>
+    </div>
+  </div>
 
 
   <!-- BOTTOM NAV -->
@@ -1257,6 +1816,193 @@ toggleButtons.forEach(btn => {
 });
 
 renderImpact("before");
+
+
+// ---------- PAGE 7: FARMER DEMO ----------
+
+const demoSteps = [
+    document.getElementById("demoStep1"),
+    document.getElementById("demoStep2"),
+    document.getElementById("demoStep3")
+];
+const trackSteps = Array.from(document.querySelectorAll(".demo-track-step"));
+const trackLines = Array.from(document.querySelectorAll(".demo-track-line"));
+
+function setDemoStep(n) {
+    demoSteps.forEach((el, i) => el.classList.toggle("is-active", i === n));
+    trackSteps.forEach((el, i) => {
+        el.classList.remove("is-current", "is-done");
+        if (i < n) el.classList.add("is-done");
+        else if (i === n) el.classList.add("is-current");
+    });
+    trackLines.forEach((el, i) => {
+        el.querySelector("i").style.width = i < n ? "100%" : "0%";
+    });
+    document.querySelector(".demo-shell").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+// -- booking state, kept only in memory for this demo --
+const bookingState = { name: "", phone: "", crop: "", qty: "", centre: "", token: "", date: "", day: "", time: "" };
+
+function generateToken() {
+    const num = Math.floor(100000 + Math.random() * 900000);
+    return "QS-" + num;
+}
+
+// -- Step 1: booking form --
+const nameInput = document.getElementById("farmerName");
+const phoneInput = document.getElementById("farmerPhone");
+const cropSelect = document.getElementById("farmerCrop");
+const qtyInput = document.getElementById("farmerQty");
+const errName = document.getElementById("errName");
+const errPhone = document.getElementById("errPhone");
+const errQty = document.getElementById("errQty");
+
+function validateStep1() {
+    let ok = true;
+    errName.textContent = "";
+    errPhone.textContent = "";
+    errQty.textContent = "";
+
+    if (!nameInput.value.trim()) {
+        errName.textContent = "Enter your name";
+        ok = false;
+    }
+    if (!/^\d{10}$/.test(phoneInput.value.trim())) {
+        errPhone.textContent = "Enter a valid 10-digit number";
+        ok = false;
+    }
+    if (!qtyInput.value || Number(qtyInput.value) <= 0) {
+        errQty.textContent = "Enter a quantity";
+        ok = false;
+    }
+    return ok;
+}
+
+const tokenModal = document.getElementById("tokenModal");
+const modalTokenValue = document.getElementById("modalTokenValue");
+
+document.getElementById("confirmBookingBtn").addEventListener("click", () => {
+    if (!validateStep1()) return;
+
+    bookingState.name = nameInput.value.trim();
+    bookingState.phone = phoneInput.value.trim();
+    bookingState.crop = cropSelect.value;
+    bookingState.qty = qtyInput.value;
+    bookingState.token = generateToken();
+
+    modalTokenValue.textContent = bookingState.token;
+    tokenModal.classList.add("is-open");
+});
+
+document.getElementById("modalOkBtn").addEventListener("click", () => {
+    tokenModal.classList.remove("is-open");
+    setDemoStep(1);
+});
+
+// -- Step 2: choose centre + auto-generated slot --
+const centreSelect = document.getElementById("centreSelect");
+const errCentre = document.getElementById("errCentre");
+const apptCards = document.getElementById("apptCards");
+const apptDate = document.getElementById("apptDate");
+const apptDay = document.getElementById("apptDay");
+const apptTime = document.getElementById("apptTime");
+const apptToken = document.getElementById("apptToken");
+
+const timeSlots = ["9:00 AM – 9:30 AM", "10:00 AM – 10:30 AM", "11:30 AM – 12:00 PM", "1:00 PM – 1:30 PM", "2:30 PM – 3:00 PM"];
+
+function assignAutoSlot() {
+    // next available day, skipping Sunday, so the demo never books a closed day
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    if (d.getDay() === 0) d.setDate(d.getDate() + 1);
+
+    bookingState.date = d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+    bookingState.day = d.toLocaleDateString("en-IN", { weekday: "long" });
+    bookingState.time = timeSlots[Math.floor(Math.random() * timeSlots.length)];
+
+    apptDate.textContent = bookingState.date;
+    apptDay.textContent = bookingState.day;
+    apptTime.textContent = bookingState.time;
+    apptToken.textContent = bookingState.token;
+    apptCards.style.opacity = "1";
+}
+
+centreSelect.addEventListener("change", () => {
+    errCentre.textContent = "";
+    if (centreSelect.value) {
+        bookingState.centre = centreSelect.value;
+        assignAutoSlot();
+    } else {
+        apptCards.style.opacity = "0.4";
+    }
+});
+
+document.getElementById("backToStep1").addEventListener("click", () => setDemoStep(0));
+
+document.getElementById("confirmCentreBtn").addEventListener("click", () => {
+    if (!centreSelect.value) {
+        errCentre.textContent = "Choose a procurement centre to continue";
+        return;
+    }
+    setDemoStep(2);
+    startWaitingSimulation();
+});
+
+// -- Step 3: confirmation + live waiting simulation --
+const waitPosition = document.getElementById("waitPosition");
+const waitCentreName = document.getElementById("waitCentreName");
+const waitProgressBar = document.getElementById("waitProgressBar");
+const summaryToken = document.getElementById("summaryToken");
+const summarySlot = document.getElementById("summarySlot");
+
+let waitInterval = null;
+
+function startWaitingSimulation() {
+    clearInterval(waitInterval);
+
+    waitCentreName.textContent = bookingState.centre;
+    summaryToken.textContent = bookingState.token;
+    summarySlot.textContent = bookingState.day + ", " + bookingState.date + " · " + bookingState.time;
+
+    let position = 8;
+    const startPosition = position;
+    waitPosition.innerHTML = position + "<span>farmers ahead</span>";
+    waitProgressBar.style.width = "0%";
+
+    waitInterval = setInterval(() => {
+        position -= 1;
+        const served = startPosition - position;
+        waitProgressBar.style.width = Math.round((served / startPosition) * 100) + "%";
+
+        if (position <= 0) {
+            waitPosition.innerHTML = "It's your turn";
+            waitPosition.style.fontSize = "26px";
+            clearInterval(waitInterval);
+        } else {
+            waitPosition.innerHTML = position + "<span>farmers ahead</span>";
+        }
+    }, 1400);
+}
+
+document.getElementById("restartDemoBtn").addEventListener("click", () => {
+    clearInterval(waitInterval);
+
+    nameInput.value = "";
+    phoneInput.value = "";
+    qtyInput.value = "";
+    cropSelect.selectedIndex = 0;
+    centreSelect.selectedIndex = 0;
+    errName.textContent = "";
+    errPhone.textContent = "";
+    errQty.textContent = "";
+    errCentre.textContent = "";
+    apptCards.style.opacity = "0.4";
+    waitPosition.style.fontSize = "";
+
+    Object.keys(bookingState).forEach(k => bookingState[k] = "");
+    setDemoStep(0);
+});
 
 </script>
 </body>
