@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help Center — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="help.html" class="active">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container" style="max-width:760px;">
+    <div class="section-head">
+      <h2>Help Center</h2>
+      <p>Answers to common questions, and how to reach us if something isn't working.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>I didn't get my OTP. What do I do?</h4>
+      <p>Wait 60 seconds and request a new code. Make sure your phone has signal and that you entered the number without any spaces.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I cancel or change a booked slot?</h4>
+      <p>Yes — open "Track a Request" and use the cancel option there, then raise a new request for a different time.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What happens if I arrive late for my slot?</h4>
+      <p>The centre will try to fit you in, but farmers who booked later slots get priority. Arriving on time keeps the queue fair for everyone.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Are the market prices official?</h4>
+      <p>Prices shown are reference rates for planning — always confirm the final rate at the procurement centre itself.</p>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-card">
+        <h4 style="margin-bottom:6px;">Email us</h4>
+        <a href="mailto:support@queuesetu.in">support@queuesetu.in</a>
+      </div>
+      <div class="contact-card">
+        <h4 style="margin-bottom:6px;">Call the helpline</h4>
+        <a href="tel:+911800000000">1800-000-000</a> (toll-free, 8am–8pm)
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu — Smart India Hackathon 2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>qsRequireLogin();</script>
+</body>
+</html>

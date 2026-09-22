@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html" class="active">History</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+    <div class="section-head">
+      <h2>Procurement History</h2>
+      <p>Every completed sale you've made through QueueSetu.</p>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Date</th><th>Centre</th><th>Crop</th><th>Quantity</th><th>Status</th></tr>
+      </thead>
+      <tbody id="historyRows"></tbody>
+    </table>
+    <div id="emptyState" style="display:none;" class="card">
+      <p style="margin:0;">No completed procurements yet — once you finish your first slot, it'll show up here.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu — Smart India Hackathon 2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  qsRequireLogin();
+
+  async function renderHistory() {
+    const history = await qsGetHistory();
+    const rows = document.getElementById('historyRows');
+    const table = rows.closest('table');
+    const empty = document.getElementById('emptyState');
+
+    if (!history.length) {
+      table.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+
+    rows.innerHTML = history.map(h => `
+      <tr>
+        <td>${h.date}</td>
+        <td>${h.centre}</td>
+        <td>${h.crop}</td>
+        <td>${h.quantity}</td>
+        <td><span class="badge badge-low">${h.status}</span></td>
+      </tr>
+    `).join('');
+  }
+
+  renderHistory();
+</script>
+</body>
+</html>

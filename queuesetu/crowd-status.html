@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crowd Status — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html" class="active">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+    <div class="section-head">
+      <h2>Crowd Status</h2>
+      <p>How busy each procurement centre is right now, before you decide where to go.</p>
+    </div>
+    <div class="grid-2" id="crowdGrid"></div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu — Smart India Hackathon 2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  qsRequireLogin();
+
+  function badgeFor(level) {
+    if (level === 'high') return '<span class="badge badge-high">● Busy</span>';
+    if (level === 'medium') return '<span class="badge badge-medium">● Moderate</span>';
+    return '<span class="badge badge-low">● Light</span>';
+  }
+
+  async function renderCrowd() {
+    const centres = await qsGetCrowdStatus();
+    document.getElementById('crowdGrid').innerHTML = centres.map(c => `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <h3 style="margin-bottom:4px;">${c.name}</h3>
+          ${badgeFor(c.level)}
+        </div>
+        <p style="margin-bottom:10px;">${c.location}</p>
+        <div class="progress-track"><div class="progress-fill" style="width:${Math.min(100, Math.round(c.ratio*100))}%;"></div></div>
+        <p style="margin:8px 0 0;font-size:0.85rem;">${c.totalBooked} of ${c.totalCapacity} slots booked today</p>
+      </div>
+    `).join('');
+  }
+
+  renderCrowd();
+  // In a live build, wrap this in a Supabase Realtime channel subscribed to
+  // the `bookings` table so the bars move without a page refresh.
+</script>
+</body>
+</html>

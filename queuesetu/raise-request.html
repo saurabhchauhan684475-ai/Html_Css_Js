@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raise a Request — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html" class="active">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+    <div class="section-head">
+      <h2>Raise a Request</h2>
+      <p>Step 1: pick a procurement centre. Step 2: pick a time. We'll confirm your slot instantly — no second OTP needed, you're already logged in.</p>
+    </div>
+
+    <div class="grid-2" style="align-items:start;">
+      <div>
+        <h3 style="margin-bottom:14px;">1. Choose your centre</h3>
+        <div id="centreList"></div>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:14px;">2. Choose a time slot</h3>
+        <div id="slotArea" class="card" style="min-height:160px;">
+          <p style="margin:0;color:var(--ink-600);">Select a centre first to see available slots.</p>
+        </div>
+
+        <div id="resultArea" style="margin-top:18px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu — Smart India Hackathon 2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  qsRequireLogin();
+
+  let selectedCentre = null;
+  let selectedSlot = null;
+
+  async function renderCentres() {
+    const centres = await qsGetCentres();
+    const wrap = document.getElementById('centreList');
+    wrap.innerHTML = '';
+    centres.forEach(centre => {
+      const el = document.createElement('div');
+      el.className = 'centre-option';
+      el.innerHTML = `
+        <div>
+          <strong>${centre.name}</strong>
+          <div style="font-size:0.85rem;color:var(--ink-600);">${centre.location}</div>
+        </div>
+        <span style="color:var(--gold-500);font-weight:600;">Select →</span>
+      `;
+      el.addEventListener('click', () => selectCentre(centre, el));
+      wrap.appendChild(el);
+    });
+  }
+
+  async function selectCentre(centre, el) {
+    selectedCentre = centre;
+    selectedSlot = null;
+    document.querySelectorAll('.centre-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('resultArea').innerHTML = '';
+
+    const slots = await qsGetSlots(centre.id);
+    const area = document.getElementById('slotArea');
+    if (!slots.length) {
+      area.innerHTML = '<p style="margin:0;">No slots configured for this centre yet.</p>';
+      return;
+    }
+    area.innerHTML = '<div class="slot-grid" id="slotGrid"></div>';
+    const grid = document.getElementById('slotGrid');
+    slots.forEach(slot => {
+      const status = qsSlotStatus(slot, centre);
+      const chip = document.createElement('div');
+      chip.className = 'slot-chip' + (status === 'full' ? ' full' : '');
+      chip.textContent = slot.time;
+      if (status !== 'full') {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.slot-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          selectedSlot = slot;
+          renderConfirmButton();
+        });
+      }
+      grid.appendChild(chip);
+    });
+  }
+
+  function renderConfirmButton() {
+    document.getElementById('resultArea').innerHTML = `
+      <button class="btn btn-primary btn-block" id="confirmBtn">Confirm slot at ${selectedSlot.time}</button>
+    `;
+    document.getElementById('confirmBtn').addEventListener('click', confirmBooking);
+  }
+
+  async function confirmBooking() {
+    const res = await qsCreateBooking(selectedCentre.id, selectedSlot.id);
+    const area = document.getElementById('resultArea');
+
+    if (res.ok) {
+      area.innerHTML = `
+        <div class="card" style="border-color:var(--green-700);">
+          <h3 style="color:var(--green-800);">Slot confirmed ✓</h3>
+          <p style="margin-bottom:4px;">${selectedCentre.name} — ${selectedSlot.time}</p>
+          <p style="margin-bottom:14px;">You are <strong>${res.booking.total_ahead}</strong> farmer(s) away from your turn.</p>
+          <a href="track-request.html" class="btn btn-gold">Track this request →</a>
+        </div>
+      `;
+      return;
+    }
+
+    if (res.full) {
+      area.innerHTML = `
+        <div class="card" style="border-color:var(--rust-600);">
+          <h3 style="color:var(--rust-600);">That slot just filled up</h3>
+          ${res.suggested
+            ? `<p>Next open slot at this centre: <strong>${res.suggested.time}</strong>.</p>
+               <button class="btn btn-primary" id="suggestedBtn">Book ${res.suggested.time} instead</button>`
+            : `<p>No other open slots at this centre today — try another centre.</p>`}
+        </div>
+      `;
+      if (res.suggested) {
+        document.getElementById('suggestedBtn').addEventListener('click', async () => {
+          selectedSlot = res.suggested;
+          await confirmBooking();
+        });
+      }
+      return;
+    }
+
+    area.innerHTML = `<div class="form-error show">${res.message || 'Something went wrong.'}</div>`;
+  }
+
+  renderCentres();
+</script>
+</body>
+</html>
