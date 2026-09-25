@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Help Center — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css"><script>try{var t=localStorage.getItem('queuesetu-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand" data-brand-link><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links" data-nav-loggedin>
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="help.html" class="active">Help</a>
+    </nav>
+    <nav class="nav-links" data-nav-guest style="display:none;">
+      <a href="index.html">Home</a>
+      <a href="help.html" class="active">Help</a>
+    </nav>
+    <div class="farmer-chip" data-farmer-chip>
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container" style="max-width:760px;">
+    <div class="section-head">
+      <h2 data-lang-en="Help Center" data-lang-hi="सहायता केंद्र">Help Center</h2>
+      <p data-lang-en="Answers to common questions, and how to reach us if something isn't working." data-lang-hi="सामान्य सवालों के जवाब और किसी समस्या की स्थिति में हमसे संपर्क करने का तरीका।">Answers to common questions, and how to reach us if something isn't working.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4 data-lang-en="I didn't get my OTP. What do I do?" data-lang-hi="मुझे OTP नहीं मिला। मुझे क्या करना चाहिए?">I didn't get my OTP. What do I do?</h4>
+      <p data-lang-en="Wait 60 seconds and request a new code. Make sure your phone has signal and that you entered the number without any spaces." data-lang-hi="60 सेकंड प्रतीक्षा करें और नया कोड मांगें। सुनिश्चित करें कि आपके फोन में नेटवर्क है और आपने नंबर बिना किसी स्पेस के दर्ज किया है।">Wait 60 seconds and request a new code. Make sure your phone has signal and that you entered the number without any spaces.</p>
+    </div>
+    <div class="faq-item">
+      <h4 data-lang-en="Can I cancel or change a booked slot?" data-lang-hi="क्या मैं बुक किए गए स्लॉट को रद्द या बदल सकता हूँ?">Can I cancel or change a booked slot?</h4>
+      <p data-lang-en="Yes — open &quot;Track a Request&quot; and use the cancel option there, then raise a new request for a different time." data-lang-hi="हाँ। &quot;अनुरोध ट्रैक करें&quot; खोलें और वहाँ रद्द करने का विकल्प चुनें। इसके बाद अलग समय के लिए नया अनुरोध दर्ज करें।">Yes — open "Track a Request" and use the cancel option there, then raise a new request for a different time.</p>
+    </div>
+    <div class="faq-item">
+      <h4 data-lang-en="What happens if I arrive late for my slot?" data-lang-hi="अगर मैं अपने स्लॉट पर देर से पहुँचूँ तो क्या होगा?">What happens if I arrive late for my slot?</h4>
+      <p data-lang-en="The centre will try to fit you in, but farmers who booked later slots get priority. Arriving on time keeps the queue fair for everyone." data-lang-hi="केंद्र आपको समायोजित करने की कोशिश करेगा, लेकिन बाद के स्लॉट बुक करने वाले किसानों को प्राथमिकता मिल सकती है। समय पर पहुँचने से सभी के लिए कतार व्यवस्थित रहती है।">The centre will try to fit you in, but farmers who booked later slots get priority. Arriving on time keeps the queue fair for everyone.</p>
+    </div>
+    <div class="faq-item">
+      <h4 data-lang-en="Are the market prices official?" data-lang-hi="क्या मंडी के भाव आधिकारिक हैं?">Are the market prices official?</h4>
+      <p data-lang-en="Prices shown are reference rates for planning — always confirm the final rate at the procurement centre itself." data-lang-hi="दिखाए गए भाव योजना बनाने के लिए संदर्भ दरें हैं। अंतिम भाव की पुष्टि हमेशा खरीद केंद्र पर स्वयं करें।">Prices shown are reference rates for planning — always confirm the final rate at the procurement centre itself.</p>
+    </div>
+
+    <div class="contact-row">
+      <div class="contact-card">
+        <h4 style="margin-bottom:6px;" data-lang-en="Email us" data-lang-hi="हमें ईमेल करें">Email us</h4>
+        <a href="mailto:saurabhchauhan684475@gmail.com">saurabhchauhan684475@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <h4 style="margin-bottom:6px;" data-lang-en="Call the helpline" data-lang-hi="हेल्पलाइन पर कॉल करें">Call the helpline</h4>
+        <a href="tel:+918175910839">+91 81759 10839</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  // Help Center is public: farmers reach it from the dashboard, but
+  // visitors can also reach it from the logged-out homepage nav, so
+  // it must not bounce anyone back with qsRequireLogin().
+  if (!qsCurrentFarmer()) {
+    document.querySelector('[data-nav-loggedin]').style.display = 'none';
+    document.querySelector('[data-nav-guest]').style.display = '';
+    document.querySelector('[data-farmer-chip]').style.display = 'none';
+    document.querySelector('[data-brand-link]').setAttribute('href', 'index.html');
+  }
+</script>
+<script src="js/i18n.js"></script><script src="js/theme.js"></script>
+</body>
+</html>

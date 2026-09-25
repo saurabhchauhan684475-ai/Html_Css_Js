@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css"><script>try{var t=localStorage.getItem('queuesetu-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html" class="active">History</a>
+      <a href="weather.html">Weather</a>
+      <a href="schemes.html">Schemes</a>
+      <a href="crop-advisory.html">Advisory</a>
+      <a href="documents.html">Documents</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-lang-en="Procurement History" data-lang-hi="खरीद इतिहास">Procurement History</h2>
+      <p data-lang-en="Every completed sale you've made through QueueSetu." data-lang-hi="QueueSetu के जरिए आपकी हर पूरी हुई बिक्री।">Every completed sale you've made through QueueSetu.</p>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr><th data-lang-en="Date" data-lang-hi="तारीख">Date</th><th data-lang-en="Centre" data-lang-hi="केंद्र">Centre</th><th data-lang-en="Crop" data-lang-hi="फसल">Crop</th><th data-lang-en="Quantity" data-lang-hi="मात्रा">Quantity</th><th data-lang-en="Status" data-lang-hi="स्थिति">Status</th></tr>
+      </thead>
+      <tbody id="historyRows"></tbody>
+    </table>
+    <div id="emptyState" style="display:none;" class="card">
+      <p style="margin:0;">No completed procurements yet — once you finish your first slot, it'll show up here.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  qsRequireLogin();
+
+  async function renderHistory() {
+    const history = await qsGetHistory();
+    const rows = document.getElementById('historyRows');
+    const table = rows.closest('table');
+    const empty = document.getElementById('emptyState');
+
+    if (!history.length) {
+      table.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+
+    rows.innerHTML = history.map(h => `
+      <tr>
+        <td>${h.date}</td>
+        <td>${h.centre}</td>
+        <td>${h.crop}</td>
+        <td>${h.quantity}</td>
+        <td><span class="badge badge-low">${h.status}</span></td>
+      </tr>
+    `).join('');
+  }
+
+  renderHistory();
+</script>
+<script src="js/i18n.js"></script><script src="js/theme.js"></script>
+</body>
+</html>

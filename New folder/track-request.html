@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track a Request — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css"><script>try{var t=localStorage.getItem('queuesetu-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html" class="active">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="weather.html">Weather</a>
+      <a href="schemes.html">Schemes</a>
+      <a href="crop-advisory.html">Advisory</a>
+      <a href="documents.html">Documents</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container" style="max-width:640px;">
+    <div class="section-head">
+      <h2 data-lang-en="Track a Request" data-lang-hi="अनुरोध ट्रैक करें">Track a Request</h2>
+      <p data-lang-en="Live status of your current booking. This updates automatically as farmers ahead of you finish." data-lang-hi="आपकी मौजूदा बुकिंग की लाइव स्थिति। जैसे-जैसे आपसे आगे के किसान पूरा करते हैं, यह अपने आप अपडेट होती है।">Live status of your current booking. This updates automatically as farmers ahead of you finish.</p>
+    </div>
+
+    <div id="trackArea"></div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  qsRequireLogin();
+
+  async function renderTracker() {
+    const booking = await qsGetActiveBooking();
+    const area = document.getElementById('trackArea');
+
+    if (!booking) {
+      area.innerHTML = `
+        <div class="card" style="text-align:center;">
+          <p>You don't have an active request right now.</p>
+          <a href="raise-request.html" class="btn btn-primary">Raise a Request</a>
+        </div>
+      `;
+      return;
+    }
+
+    const totalAhead = booking.total_ahead;
+    const pctDone = totalAhead === 0 ? 100 : Math.max(8, 100 - totalAhead * 15);
+    const etaMinutes = totalAhead * 6;
+
+    area.innerHTML = `
+      <div class="queue-panel">
+        <div style="color:var(--ink-600);font-size:0.9rem;">${booking.centre_name} · ${booking.time}</div>
+        <div style="font-weight:600;color:var(--green-800);margin-bottom:4px;">Token ${booking.token_no || '—'}</div>
+        <div class="queue-number">${totalAhead}</div>
+        <div style="color:var(--ink-600);">farmer(s) ahead of you</div>
+        <div class="progress-track"><div class="progress-fill" style="width:${pctDone}%;"></div></div>
+        <p style="margin-bottom:16px;">
+          ${totalAhead === 0
+            ? "You're up next — please head to the centre now."
+            : `Estimated wait: <strong>~${etaMinutes} minutes</strong>`}
+        </p>
+        <a href="slip.html" class="btn btn-ghost">View / print token slip →</a>
+      </div>
+    `;
+  }
+
+  renderTracker();
+  // In a live build with Supabase Realtime, subscribe to changes on the
+  // `bookings` table for this centre/slot and call renderTracker() again
+  // whenever a row changes — no polling needed.
+</script>
+<script src="js/i18n.js"></script><script src="js/theme.js"></script>
+</body>
+</html>

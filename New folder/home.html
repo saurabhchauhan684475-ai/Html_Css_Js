@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css"><script>try{var t=localStorage.getItem('queuesetu-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html" class="active">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="weather.html">Weather</a>
+      <a href="schemes.html">Schemes</a>
+      <a href="crop-advisory.html">Advisory</a>
+      <a href="documents.html">Documents</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span>
+      <span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="dash-header">
+  <div class="container">
+    <div class="dash-welcome">
+      <div class="greeting" data-lang-en="Welcome back," data-lang-hi="वापसी पर स्वागत है,">Welcome back,</div>
+      <h1><span data-farmer-name></span> 👋</h1>
+    </div>
+    <a href="raise-request.html" class="btn btn-gold">+ Raise a new request</a>
+  </div>
+</section>
+
+<section class="dash-body">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:22px;">
+      <h2 data-lang-en="What would you like to do?" data-lang-hi="आप क्या करना चाहेंगे?">What would you like to do?</h2>
+    </div>
+
+    <div class="tile-grid">
+      <a href="raise-request.html" class="tile">
+        <div class="tile-icon">📍</div>
+        <h3 data-lang-en="Raise a Request" data-lang-hi="अनुरोध दर्ज करें">Raise a Request</h3>
+        <p data-lang-en="Choose your procurement centre and book a time slot." data-lang-hi="अपना खरीद केंद्र चुनें और समय स्लॉट बुक करें।">Choose your procurement centre and book a time slot.</p>
+        <div class="tile-meta" data-lang-en="Book now →" data-lang-hi="अभी बुक करें →">Book now →</div>
+      </a>
+
+      <a href="track-request.html" class="tile">
+        <div class="tile-icon">⏱️</div>
+        <h3 data-lang-en="Track a Request" data-lang-hi="अनुरोध ट्रैक करें">Track a Request</h3>
+        <p data-lang-en="Check your live queue position and estimated wait." data-lang-hi="अपनी लाइव कतार स्थिति और अनुमानित प्रतीक्षा समय देखें।">Check your live queue position and estimated wait.</p>
+        <div class="tile-meta" data-lang-en="View status →" data-lang-hi="स्थिति देखें →">View status →</div>
+      </a>
+
+      <a href="market-prices.html" class="tile">
+        <div class="tile-icon">🌾</div>
+        <h3 data-lang-en="Market Prices" data-lang-hi="मंडी भाव">Market Prices</h3>
+        <p data-lang-en="Today's mandi rates for wheat, paddy, mustard and more." data-lang-hi="गेहूं, धान, सरसों और अन्य फसलों के आज के मंडी भाव।">Today's mandi rates for wheat, paddy, mustard and more.</p>
+        <div class="tile-meta" data-lang-en="See rates →" data-lang-hi="भाव देखें →">See rates →</div>
+      </a>
+
+      <a href="crowd-status.html" class="tile">
+        <div class="tile-icon">👥</div>
+        <h3 data-lang-en="Crowd Status" data-lang-hi="भीड़ की स्थिति">Crowd Status</h3>
+        <p data-lang-en="Compare how busy each centre is right now." data-lang-hi="अभी हर केंद्र में भीड़ की तुलना करें।">Compare how busy each centre is right now.</p>
+        <div class="tile-meta" data-lang-en="Check crowd →" data-lang-hi="भीड़ देखें →">Check crowd →</div>
+      </a>
+
+      <a href="history.html" class="tile">
+        <div class="tile-icon">📜</div>
+        <h3 data-lang-en="Procurement History" data-lang-hi="खरीद इतिहास">Procurement History</h3>
+        <p data-lang-en="Every sale you've completed through QueueSetu." data-lang-hi="QueueSetu के जरिए आपकी हर पूरी हुई बिक्री।">Every sale you've completed through QueueSetu.</p>
+        <div class="tile-meta" data-lang-en="View history →" data-lang-hi="इतिहास देखें →">View history →</div>
+      </a>
+
+      <a href="help.html" class="tile">
+        <div class="tile-icon">🛟</div>
+        <h3 data-lang-en="Help Center" data-lang-hi="सहायता केंद्र">Help Center</h3>
+        <p data-lang-en="Guides, FAQs, and how to reach us if something's wrong." data-lang-hi="गाइड, सामान्य प्रश्न, और किसी समस्या पर हमसे संपर्क करने का तरीका।">Guides, FAQs, and how to reach us if something's wrong.</p>
+        <div class="tile-meta" data-lang-en="Get help →" data-lang-hi="सहायता लें →">Get help →</div>
+      </a>
+    </div>
+  </div>
+
+    <div class="section-head" style="margin:34px 0 18px;">
+      <h2 data-lang-en="Farmer Services" data-lang-hi="किसान सेवाएं">Farmer Services</h2>
+      <p data-lang-en="Useful information beyond the queue: weather, schemes, crop guidance and documents." data-lang-hi="कतार के अलावा जरूरी जानकारी: मौसम, योजनाएं, फसल सलाह और दस्तावेज।">Useful information beyond the queue: weather, schemes, crop guidance and documents.</p>
+    </div>
+    <div class="tile-grid">
+      <a href="weather.html" class="tile"><div class="tile-icon">🌤️</div><h3 data-lang-en="Weather & Forecast" data-lang-hi="मौसम और पूर्वानुमान">Weather & Forecast</h3><p data-lang-en="Plan harvesting, transport and your centre visit around the weather." data-lang-hi="मौसम के अनुसार कटाई, परिवहन और केंद्र जाने की योजना बनाएं।">Plan harvesting, transport and your centre visit around the weather.</p><div class="tile-meta" data-lang-en="Check forecast →" data-lang-hi="पूर्वानुमान देखें →">Check forecast →</div></a>
+      <a href="schemes.html" class="tile"><div class="tile-icon">🏛️</div><h3 data-lang-en="Government Schemes" data-lang-hi="सरकारी योजनाएं">Government Schemes</h3><p data-lang-en="Find farmer-focused schemes and remember to verify eligibility officially." data-lang-hi="किसानों से जुड़ी योजनाएं देखें और पात्रता आधिकारिक रूप से सत्यापित करें।">Find farmer-focused schemes and remember to verify eligibility officially.</p><div class="tile-meta" data-lang-en="Explore schemes →" data-lang-hi="योजनाएं देखें →">Explore schemes →</div></a>
+      <a href="crop-advisory.html" class="tile"><div class="tile-icon">🌱</div><h3 data-lang-en="Crop Advisory" data-lang-hi="फसल सलाह">Crop Advisory</h3><p data-lang-en="Simple crop-care reminders for common crops and problems." data-lang-hi="सामान्य फसलों और समस्याओं के लिए आसान देखभाल सुझाव।">Simple crop-care reminders for common crops and problems.</p><div class="tile-meta" data-lang-en="View advice →" data-lang-hi="सलाह देखें →">View advice →</div></a>
+      <a href="documents.html" class="tile"><div class="tile-icon">📂</div><h3 data-lang-en="Documents Checklist" data-lang-hi="दस्तावेज चेकलिस्ट">Documents Checklist</h3><p data-lang-en="Keep identity, land, banking and procurement documents ready." data-lang-hi="पहचान, भूमि, बैंकिंग और खरीद से जुड़े दस्तावेज तैयार रखें।">Keep identity, land, banking and procurement documents ready.</p><div class="tile-meta" data-lang-en="View checklist →" data-lang-hi="चेकलिस्ट देखें →">View checklist →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  QueueSetu
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>qsRequireLogin();</script>
+<script src="js/i18n.js"></script><script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Token Slip — QueueSetu</title>
+<link rel="stylesheet" href="css/style.css"><script>try{var t=localStorage.getItem('queuesetu-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="home.html" class="brand"><span class="brand-mark">Q</span> QueueSetu</a>
+    <nav class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="raise-request.html">Raise a Request</a>
+      <a href="track-request.html" class="active">Track</a>
+      <a href="market-prices.html">Prices</a>
+      <a href="crowd-status.html">Crowd</a>
+      <a href="history.html">History</a>
+      <a href="weather.html">Weather</a>
+      <a href="schemes.html">Schemes</a>
+      <a href="crop-advisory.html">Advisory</a>
+      <a href="documents.html">Documents</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <div class="farmer-chip">
+      <span class="dot"></span><span data-farmer-name></span>
+      <a href="#" class="js-logout" style="margin-left:10px;color:#b5502d;text-decoration:none;font-weight:600;">Log out</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:44px;">
+  <div class="container">
+    <div class="section-head no-print">
+      <h2 data-lang-en="Your Token Slip" data-lang-hi="आपकी टोकन पर्ची">Your Token Slip</h2>
+      <p data-lang-en="Keep this on your phone or print it — show it at the centre when it's your turn." data-lang-hi="इसे अपने फोन में रखें या प्रिंट करें — अपनी बारी आने पर केंद्र में इसे दिखाएं।">Keep this on your phone or print it — show it at the centre when it's your turn.</p>
+    </div>
+
+    <div id="slipArea"></div>
+  </div>
+</section>
+
+<footer class="site-footer">QueueSetu</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/data.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  qsRequireLogin();
+
+  function formatIssuedAt(iso) {
+    const d = new Date(iso);
+    if (isNaN(d)) return '—';
+    return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) +
+      ' · ' + d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  async function renderSlip() {
+    const booking = await qsGetActiveBooking();
+    const area = document.getElementById('slipArea');
+
+    if (!booking) {
+      area.innerHTML = `
+        <div class="card" style="max-width:420px;margin:0 auto;text-align:center;">
+          <p>You don't have an active token right now.</p>
+          <a href="raise-request.html" class="btn btn-primary">Raise a Request</a>
+        </div>
+      `;
+      return;
+    }
+
+    const farmer = qsCurrentFarmer() || {};
+
+    area.innerHTML = `
+      <div class="slip-wrap">
+        <div class="slip-card" id="printableSlip">
+          <div class="slip-head">
+            <div class="slip-eyebrow">QueueSetu · Procurement Token</div>
+            <div class="slip-token">${booking.token_no || '—'}</div>
+            <div class="slip-token-label">Show this token number at the centre</div>
+          </div>
+          <div class="slip-body">
+            <div class="slip-row"><span class="slip-label">Farmer</span><span class="slip-value">${booking.farmer_name || farmer.name || '—'}</span></div>
+            <div class="slip-row"><span class="slip-label">Phone</span><span class="slip-value">${booking.farmer_phone || farmer.phone || '—'}</span></div>
+            <div class="slip-row"><span class="slip-label">Centre</span><span class="slip-value">${booking.centre_name}</span></div>
+            <div class="slip-row"><span class="slip-label">Location</span><span class="slip-value">${booking.centre_location || '—'}</span></div>
+            <div class="slip-row"><span class="slip-label">Time slot</span><span class="slip-value">${booking.time}</span></div>
+            <div class="slip-row"><span class="slip-label">Queue position at issue</span><span class="slip-value">#${booking.queue_position}</span></div>
+            <div class="slip-row"><span class="slip-label">Issued</span><span class="slip-value">${formatIssuedAt(booking.created_at)}</span></div>
+          </div>
+          <div class="slip-note">
+            Please carry a valid ID matching the name above and arrive at least 10 minutes
+            before your slot. Your live position can change slightly as other farmers are
+            served — check the Track page for the latest count.
+          </div>
+        </div>
+
+        <div class="slip-actions no-print">
+          <button class="btn btn-primary" id="printBtn">Print slip</button>
+          <a href="track-request.html" class="btn btn-ghost">Track this request →</a>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  }
+
+  renderSlip();
+</script>
+<script src="js/i18n.js"></script><script src="js/theme.js"></script>
+</body>
+</html>
